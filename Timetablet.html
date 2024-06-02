@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание занятий</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            color: #ff6600;
+            text-align: center;
+            margin-top: 20px;
+        }
+        select {
+            font-size: 16px;
+            padding: 8px;
+            margin: 10px auto;
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            display: none;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #ff6600;
+            color: #fff;
+        }
+        th:first-child {
+            border-top-left-radius: 8px;
+        }
+        th:last-child {
+            border-top-right-radius: 8px;
+        }
+        td:first-child {
+            font-weight: bold;
+        }
+        /* Уникальные стили для Группы 101 */
+        #schedule101, #calls101 {
+            background-color: #fff;
+        }
+        /* Уникальные стили для Группы 102 */
+        #schedule102, #calls102 {
+            background-color: #ffc0cb;
+        }
+        /* Уникальные стили для Группы 103 */
+        #schedule103, #calls103 {
+            background-color: #87ceeb;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Оберіть групу</h2>
+
+<select id="groupSelect" onchange="showSchedule()">
+  <option value="101">Група 101</option>
+  <option value="102">Група 102</option>
+  <option value="103">Група 103</option>
+</select>
+
+<h2>Розклад занятть </h2>
+
+<table id="schedule101"> <!-- Расписание для Группы 101 -->
+  <tr>
+    <th>Час</th>
+    <th>Понеділок</th>
+    <th>Вівторок</th>
+    <th>Среда</th>
+    <th>Четверг</th>
+    <th>П`ятница</th>
+  </tr>
+  <tr>
+    <td>9:00 - 10:30</td>
+    <td>Вик. Іванов<br>Математика</td>
+    <td></td>
+    <td>Вик. Петров<br>Фізика</td>
+    <td>Вик. Сидоров<br>Хімія</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>10:45 - 12:15</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>12:30 - 14:00</td>
+    <td></td>
+    <td>Вик. Іванов<br>Істория</td>
+    <td>Вик. Петров<br>Література</td>
+    <td></td>
+    <td>Вик. Сидоров<br>Біологія</td>
+  </tr>
+</table>
+
+<table id="schedule102" style="display:none;"> <!-- Расписание для Группы 102 -->
+  <tr>
+    <th>Час</th>
+    <th>Понеділок</th>
+    <th>Вівторок</th>
+    <th>Среда</th>
+    <th>Четверг</th>
+    <th>П`ятница</th>
+  </tr>
+  <tr>
+    <td>9:00 - 10:30</td>
+    <td>Вик. Смирнов<br>Фізика</td>
+    <td></td>
+    <td>Вик. Козлова<br>Біологія</td>
+    <td>Вик. Павлова<br>Хімія</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>10:45 - 12:15</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>12:30 - 14:00</td>
+    <td></td>
+    <td>Вик. Смирнов<br>Історія</td>
+    <td>Вик. Козлова<br>Математика</td>
+    <td></td>
+    <td>Вик. Павлова<br>Фізика</td>
+  </tr>
+</table>
+
+<table id="schedule103" style="display:none;"> <!-- Расписание для Группы 103 -->
+  <tr>
+    <th>Час</th>
+    <th>Понеділок</th>
+    <th>Вівторок</th>
+    <th>Среда</th>
+    <th>Четверг</th>
+    <th>П`ятница</th>
+  </tr>
+  <tr>
+    <td>9:00 - 10:30</td>
+    <td>Вик. Кузнецова<br>Література</td>
+    <td></td>
+    <td>Вик. Морозова<br>Математика</td>
+    <td>Вик. Жукова<br>Фізика</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>10:45 - 12:15</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>12:30 - 14:00</td>
+    <td></td>
+    <td>Вик. Кузнецова<br>Хімія</td>
+    <td>Вик. Морозова<br>Література</td>
+    <td></td>
+    <td>Вик. Жукова<br>Біологія</td>
+  </tr>
+</table>
+
+<h2>Розклад дзвінків</h2>
+
+<table id="calls101" style="display:none;"> <!-- Расписание звонков для Группы 101 -->
+  <tr>
+    <th>Час</th>
+    <th>Перерва</th>
+  </tr>
+  <tr>
+    <td>9:00 - 9:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>10:00 - 10:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>11:00 - 11:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>12:00 - 12:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>13:00 - 13:45</td>
+    <td>Перерва</td>
+  </tr>
+</table>
+
+<table id="calls102" style="display:none;"> <!-- Расписание звонков для Группы 102 -->
+    <tr>
+        <th>Час</th>
+    <th>Перерва</th>
+  </tr>
+  <tr>
+    <td>9:00 - 9:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>10:00 - 10:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>11:00 - 11:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>12:00 - 12:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>13:00 - 13:45</td>
+    <td>Перерва</td>
+      </tr>
+</table>
+
+<table id="calls103" style="display:none;"> <!-- Расписание звонков для Группы 103 -->
+    <tr>
+        <th>Час</th>
+    <th>Перерва</th>
+  </tr>
+  <tr>
+    <td>9:00 - 9:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>10:00 - 10:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>11:00 - 11:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>12:00 - 12:45</td>
+    <td>Перерва</td>
+  </tr>
+  <tr>
+    <td>13:00 - 13:45</td>
+    <td>Перерва</td>
+      </tr>
+</table>
+
+<script>
+function showSchedule() {
+  var selectedGroup = document.getElementById("groupSelect").value;
+  var allSchedules = document.querySelectorAll("table[id^='schedule']");
+  var allCalls = document.querySelectorAll("table[id^='calls']");
+  
+  // Скрываем все таблицы расписания и расписания звонков
+  allSchedules.forEach(function(schedule) {
+    schedule.style.display = "none";
+  });
+  allCalls.forEach(function(call) {
+    call.style.display = "none";
+  });
+  
+  // Показываем таблицы расписания и расписания звонков выбранной группы
+  var selectedSchedule = document.getElementById("schedule" + selectedGroup);
+  var selectedCalls = document.getElementById("calls" + selectedGroup);
+  selectedSchedule.style.display = "table";
+  selectedCalls.style.display = "table";
+}
+</script>
+
+</body>
+</html>
